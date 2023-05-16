@@ -7,3 +7,4 @@ The packages imported were: pandas as pd and numpy as np. Jupyter notebook was t
 In order to run this successfully this has been split into three separtate jypiter notebooks. the process is:
 
 1: Category and Subcategory
+The packages imported were: pandas as pd and numpy as np. Jupyter notebook was the notebook used and an SQL file was uploaded for the SQL table schema made. The SQL file can be found in the Resources folder.
