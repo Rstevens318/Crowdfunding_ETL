@@ -1,24 +1,20 @@
-﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
--- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
-
-
-CREATE TABLE "Category" (
+﻿CREATE TABLE "category" (
     "category_id" VARCHAR(7)   NOT NULL,
     "category" VARCHAR(50)   NOT NULL,
-    CONSTRAINT "pk_Category" PRIMARY KEY (
+    CONSTRAINT "pk_category" PRIMARY KEY (
         "category_id"
      )
 );
 
-CREATE TABLE "Subcategory" (
+CREATE TABLE "subcategory" (
     "subcategory_id" VARCHAR(10)   NOT NULL,
     "subcategory" VARCHAR(50)   NOT NULL,
-    CONSTRAINT "pk_Subcategory" PRIMARY KEY (
+    CONSTRAINT "pk_subcategory" PRIMARY KEY (
         "subcategory_id"
      )
 );
 
-CREATE TABLE "Campaign" (
+CREATE TABLE "campaign" (
     "cf_id" INT   NOT NULL,
     "contact_id" INT   NOT NULL,
     "company_name" VARCHAR(100)   NOT NULL,
@@ -35,22 +31,30 @@ CREATE TABLE "Campaign" (
     "subcategory_id" VARCHAR(10)   NOT NULL
 );
 
-CREATE TABLE "Contacts" (
+CREATE TABLE "contacts" (
     "contact_id" INT   NOT NULL,
     "first_name" VARCHAR(25)   NOT NULL,
     "last_name" VARCHAR(25)   NOT NULL,
     "email" VARCHAR(50)   NOT NULL,
-    CONSTRAINT "pk_Contacts" PRIMARY KEY (
+    CONSTRAINT "pk_contacts" PRIMARY KEY (
         "contact_id"
      )
 );
 
-ALTER TABLE "Campaign" ADD CONSTRAINT "fk_Campaign_contact_id" FOREIGN KEY("contact_id")
-REFERENCES "Contacts" ("contact_id");
+ALTER TABLE "campaign" ADD CONSTRAINT "fk_campaign_contact_id" FOREIGN KEY("contact_id")
+REFERENCES "contacts" ("contact_id");
 
-ALTER TABLE "Campaign" ADD CONSTRAINT "fk_Campaign_category_id" FOREIGN KEY("category_id")
-REFERENCES "Category" ("category_id");
+ALTER TABLE "campaign" ADD CONSTRAINT "fk_campaign_category_id" FOREIGN KEY("category_id")
+REFERENCES "category" ("category_id");
 
-ALTER TABLE "Campaign" ADD CONSTRAINT "fk_Campaign_subcategory_id" FOREIGN KEY("subcategory_id")
-REFERENCES "Subcategory" ("subcategory_id");
+ALTER TABLE "campaign" ADD CONSTRAINT "fk_campaign_subcategory_id" FOREIGN KEY("subcategory_id")
+REFERENCES "subcategory" ("subcategory_id");
 
+-- Run one by one to view tables
+SELECT * FROM campaign
+
+SELECT * FROM contacts
+
+SELECT * FROM category
+
+SELECT * FROM subcategory
