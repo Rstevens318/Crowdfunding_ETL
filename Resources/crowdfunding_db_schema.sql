@@ -1,4 +1,8 @@
-﻿CREATE TABLE "category" (
+﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
+-- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
+
+
+CREATE TABLE "category" (
     "category_id" VARCHAR(7)   NOT NULL,
     "category" VARCHAR(50)   NOT NULL,
     CONSTRAINT "pk_category" PRIMARY KEY (
@@ -28,7 +32,10 @@ CREATE TABLE "campaign" (
     "launched_date" DATE   NOT NULL,
     "end_date" DATE   NOT NULL,
     "category_id" VARCHAR(7)   NOT NULL,
-    "subcategory_id" VARCHAR(10)   NOT NULL
+    "subcategory_id" VARCHAR(10)   NOT NULL,
+    CONSTRAINT "pk_campaign" PRIMARY KEY (
+        "cf_id"
+     )
 );
 
 CREATE TABLE "contacts" (
@@ -49,6 +56,7 @@ REFERENCES "category" ("category_id");
 
 ALTER TABLE "campaign" ADD CONSTRAINT "fk_campaign_subcategory_id" FOREIGN KEY("subcategory_id")
 REFERENCES "subcategory" ("subcategory_id");
+
 
 -- Run one by one to view tables
 SELECT * FROM campaign
